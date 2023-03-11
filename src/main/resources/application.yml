@@ -16,10 +16,6 @@ spring:
       platform: h2
       schema: classpath:schema-h2.sql
 
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-
 fiap:
-  credit-card:
-    resource: lista_alunos_simples.txt
+  creditcard:
+    resource: src/main/resources/alunos.txt

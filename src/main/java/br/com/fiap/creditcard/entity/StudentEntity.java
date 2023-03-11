@@ -1,12 +1,13 @@
 package br.com.fiap.creditcard.entity;
 
 import br.com.fiap.creditcard.dto.StudentCreateUpdateDTO;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "TB_STUDENT")
 @EntityListeners(AuditingEntityListener.class)
+
 public class StudentEntity {
 
     @Id
