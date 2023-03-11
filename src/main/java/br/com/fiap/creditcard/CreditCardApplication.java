@@ -86,7 +86,7 @@ public class CreditCardApplication {
 			ItemWriter<StudentBatchOut> itemWriter
 	){
 		return stepBuilderFactory.get("student process step")
-				.<StudentBatchIn, StudentBatchOut>chunk(1)
+				.<StudentBatchIn, StudentBatchOut>chunk(1000)
 				.reader(itemReader)
 				.processor(itemProcessor)
 				.writer(itemWriter)

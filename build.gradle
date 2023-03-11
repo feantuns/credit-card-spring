@@ -27,6 +27,9 @@ dependencies {
 	//Batch
 	implementation 'org.springframework.boot:spring-boot-starter-batch'
 
+	//Util
+	implementation 'org.apache.commons:commons-csv:1.10.0'
+
 	//Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.batch:spring-batch-test'

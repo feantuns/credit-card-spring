@@ -2,6 +2,7 @@ package br.com.fiap.creditcard.service;
 
 import br.com.fiap.creditcard.dto.TransactionCreateDTO;
 import br.com.fiap.creditcard.dto.TransactionDTO;
+import br.com.fiap.creditcard.dto.TransactionFormattedDTO;
 import br.com.fiap.creditcard.entity.TransactionEntity;
 import br.com.fiap.creditcard.repository.TransactionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,7 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.NumberFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +29,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<TransactionDTO> list(Long studentId) {
+    public List<TransactionFormattedDTO> list(Long studentId) {
         List<TransactionEntity> transactionEntities;
 
         if (studentId != null) {
@@ -35,7 +39,13 @@ public class TransactionServiceImpl implements TransactionService {
         }
         return transactionEntities
                 .stream()
-                .map(transactionEntity -> new TransactionDTO(transactionEntity.getId(), transactionEntity.getStudentId(), transactionEntity.getPrice(), transactionEntity.getCreatedDate()))
+                .map(transactionEntity -> {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY HH:mm");
+                    Locale locale = new Locale("pt", "BR");
+                    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+
+                    return new TransactionFormattedDTO(transactionEntity.getId(), transactionEntity.getStudentId(), currencyFormatter.format(transactionEntity.getPrice()), transactionEntity.getCreatedDate().format(formatter));
+                })
                 .collect(Collectors.toList());
     }
 

@@ -2,6 +2,7 @@ package br.com.fiap.creditcard.controller;
 
 import br.com.fiap.creditcard.dto.TransactionCreateDTO;
 import br.com.fiap.creditcard.dto.TransactionDTO;
+import br.com.fiap.creditcard.dto.TransactionFormattedDTO;
 import br.com.fiap.creditcard.service.TransactionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class TransactionController {
     }
 
     @GetMapping
-    public List<TransactionDTO> listAll() {
+    public List<TransactionFormattedDTO> listAll() {
         return transactionService.list(null);
     }
 
