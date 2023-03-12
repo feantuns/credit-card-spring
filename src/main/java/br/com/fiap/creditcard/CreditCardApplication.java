@@ -1,6 +1,7 @@
 package br.com.fiap.creditcard;
 
 import br.com.fiap.creditcard.batch.ItemSkipPolicy;
+import br.com.fiap.creditcard.batch.JobCompletionListener;
 import br.com.fiap.creditcard.dto.StudentBatchIn;
 import br.com.fiap.creditcard.dto.StudentBatchOut;
 import org.springframework.batch.core.Job;
@@ -10,9 +11,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
-import org.springframework.batch.item.file.FlatFileParseException;
 import org.springframework.core.io.PathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
@@ -20,7 +19,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.UrlResource;
 
 import javax.sql.DataSource;
 
@@ -98,10 +96,16 @@ public class CreditCardApplication {
 	}
 
 	@Bean
+	public JobCompletionListener jobCompletionListener() {
+		return new JobCompletionListener();
+	}
+
+	@Bean
 	public Job job(JobBuilderFactory jobBuilderFactory,
 				   Step step){
 		return jobBuilderFactory.get("student import job")
 				.start(step)
+				.listener(jobCompletionListener())
 				.build();
 	}
 
