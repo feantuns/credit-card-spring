@@ -8,6 +8,7 @@ class CreditCardApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
