@@ -1,5 +1,13 @@
 # credit-card-spring
 
+Trabalho para a disciplina de Spring do MBA Full-Stack da FIAP.
+
+Alunos:
+
+- Felipe Antunes
+- Raquel Ferreira
+- Wellington Pimentel
+
 ## Tecnologias utilizadas
 
 Para o banco de dados foi utilizado o H2. Com o intuito de facilitar o desenvolvimento e a configuração do ambiente.
