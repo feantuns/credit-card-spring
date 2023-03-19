@@ -15,7 +15,11 @@ spring:
       initialize-schema: always
       platform: h2
       schema: classpath:schema-h2.sql
+  mvc:
+    pathmatch:
+      matching-strategy: "ant-path-matcher"
 
 fiap:
   creditcard:
     resource: src/main/resources/alunos.txt
+
