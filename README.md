@@ -16,6 +16,7 @@ Para o processamento de arquivos fui utilizado o Spring Batch, seguindo o exempl
 
 Para a geração e o download do arquivo de exportação de transações foi utilizado a dependência [commons-csv](https://commons.apache.org/proper/commons-csv/dependency-info.html).
 
+Para a documentação foi utilizado SpringFox. Durante a aula foi utilizado SpringDoc, porém devido a conflito com outras dependencias, foi utilizado o SpringFox.
 ## Como subir o projeto
 
 O sistema é constituído por apenas um projeto principal. Para subi-lo basta executar o projeto no intellij.
@@ -31,3 +32,9 @@ Para o CRUD de alunos: `/students`.
 Para a Criação, Listagem e Remoção de transações: `/transactions`.
 
 Para o download do extrato de transações: GET `/students/1/transactions/export-to-csv`
+
+## Como acessar o Swagger e documentação
+
+Para acesso ao swagger necessário acessar o endereço /swagger.html (no nosso exemplo: http://localhost:8080/swagger-ui.html )
+
+Para acesso à documentação das apis, acessar o endereço /v2/api-docs (no nosso exemplo: http://localhost:8080/v2/api-docs )
