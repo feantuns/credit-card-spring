@@ -40,7 +40,7 @@ public class StudentController {
         return studentService.get(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public StudentDTO create(@RequestBody StudentCreateUpdateDTO studentCreateUpdateDTO) {
         return studentService.create(studentCreateUpdateDTO);
